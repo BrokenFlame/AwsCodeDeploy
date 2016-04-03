@@ -1,0 +1,22 @@
+Enter file contents hereversion: 0.0
+os: windows
+
+files:
+  - source: source-files-location
+    destination: C:\opt\folder
+    
+ permissions:
+  - object: C:\opt\folder
+    pattern: *.*
+    except: *.pdb
+    alcs: 
+      - u:iuser:rwx
+      -g:Administrators:rwx
+    type:
+     - directory
+ 
+ hooks:
+  deployment-lifecycle-event-name:
+    - location: script-location
+      timeout: 300
+      runas: Administrator
